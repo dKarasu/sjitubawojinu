@@ -621,6 +621,20 @@ CreateToggle('Auto Collect Nearby Chests', false, function(state)
 						if distance < 22 then
 							fireproximityprompt(chest.Handle.ProximityPrompt)
 						end
+					elseif 
+						chest:IsA('Part')
+						and chest
+						:FindFirstChild('Mesh')
+						:FindFirstChild('ProximityPrompt')
+					then
+						local distance =
+						(
+							chest.Position - hrp.Position
+						).Magnitude
+						if distance < 22 then
+							fireproximityprompt(chest.ProximityPrompt)
+						end
+					
 					end
 				end
 			end)
